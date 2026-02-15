@@ -1,0 +1,220 @@
+================
+If statement
+================
+
+{
+  if iszero(x) {
+    revert(0, 0)
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (if_statement
+        condition: (expression
+          (function_call
+            function: (evm_builtin)
+            (expression
+              (identifier))))
+        (block
+          (statement
+            (expression_statement
+              (expression
+                (function_call
+                  function: (evm_builtin)
+                  (expression
+                    (literal
+                      (decimal_number)))
+                  (expression
+                    (literal
+                      (decimal_number))))))))))))
+
+================
+Switch with cases
+================
+
+{
+  switch x
+  case 0 { y := 1 }
+  case 1 { y := 2 }
+  default { y := 0 }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (switch_statement
+        value: (expression
+          (identifier))
+        (case_clause
+          value: (literal
+            (decimal_number))
+          (block
+            (statement
+              (assignment
+                (identifier)
+                (expression
+                  (literal
+                    (decimal_number)))))))
+        (case_clause
+          value: (literal
+            (decimal_number))
+          (block
+            (statement
+              (assignment
+                (identifier)
+                (expression
+                  (literal
+                    (decimal_number)))))))
+        (default_clause
+          (block
+            (statement
+              (assignment
+                (identifier)
+                (expression
+                  (literal
+                    (decimal_number)))))))))))
+
+================
+Switch with only default
+================
+
+{
+  switch x
+  default { y := 0 }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (switch_statement
+        value: (expression
+          (identifier))
+        (default_clause
+          (block
+            (statement
+              (assignment
+                (identifier)
+                (expression
+                  (literal
+                    (decimal_number)))))))))))
+
+================
+For loop
+================
+
+{
+  for { let i := 0 } lt(i, 10) { i := add(i, 1) } {
+    mstore(i, 7)
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (for_statement
+        init: (block
+          (statement
+            (variable_declaration
+              (typed_identifier_list
+                (identifier))
+              (expression
+                (literal
+                  (decimal_number))))))
+        condition: (expression
+          (function_call
+            function: (evm_builtin)
+            (expression
+              (identifier))
+            (expression
+              (literal
+                (decimal_number)))))
+        update: (block
+          (statement
+            (assignment
+              (identifier)
+              (expression
+                (function_call
+                  function: (evm_builtin)
+                  (expression
+                    (identifier))
+                  (expression
+                    (literal
+                      (decimal_number))))))))
+        body: (block
+          (statement
+            (expression_statement
+              (expression
+                (function_call
+                  function: (evm_builtin)
+                  (expression
+                    (identifier))
+                  (expression
+                    (literal
+                      (decimal_number))))))))))))
+
+================
+Break and continue
+================
+
+{
+  for {} 1 {} {
+    if iszero(x) { break }
+    continue
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (for_statement
+        init: (block)
+        condition: (expression
+          (literal
+            (decimal_number)))
+        update: (block)
+        body: (block
+          (statement
+            (if_statement
+              condition: (expression
+                (function_call
+                  function: (evm_builtin)
+                  (expression
+                    (identifier))))
+              (block
+                (statement
+                  (break_statement)))))
+          (statement
+            (continue_statement)))))))
+
+================
+Leave statement
+================
+
+{
+  function f() {
+    leave
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (function_definition
+        name: (identifier)
+        (block
+          (statement
+            (leave_statement)))))))

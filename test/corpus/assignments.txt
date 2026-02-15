@@ -1,0 +1,63 @@
+================
+Simple assignment
+================
+
+{
+  x := 1
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (assignment
+        (identifier)
+        (expression
+          (literal
+            (decimal_number)))))))
+
+================
+Multi-variable assignment
+================
+
+{
+  x, y := foo()
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (assignment
+        (identifier)
+        (identifier)
+        (expression
+          (function_call
+            function: (identifier)))))))
+
+================
+Assignment from function call
+================
+
+{
+  x := add(1, 2)
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (assignment
+        (identifier)
+        (expression
+          (function_call
+            function: (evm_builtin)
+            (expression
+              (literal
+                (decimal_number)))
+            (expression
+              (literal
+                (decimal_number)))))))))

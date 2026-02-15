@@ -1,0 +1,34 @@
+{
+  "grammars": [
+    {
+      "name": "yul",
+      "camelcase": "Yul",
+      "scope": "source.yul",
+      "path": ".",
+      "file-types": ["yul"],
+      "highlights": "queries/highlights.scm",
+      "injection-regex": "^yul$"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Yul grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Jacob Czepluch"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/czepluch/tree-sitter-yul"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": false,
+    "node": true,
+    "python": false,
+    "rust": true,
+    "swift": false
+  }
+}

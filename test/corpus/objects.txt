@@ -1,0 +1,155 @@
+================
+Simple object
+================
+
+object "Contract" {
+  code {
+    sstore(0, caller())
+  }
+}
+
+---
+
+(source_file
+  (object_definition
+    name: (string_literal)
+    (code_section
+      (block
+        (statement
+          (expression_statement
+            (expression
+              (function_call
+                function: (evm_builtin)
+                (expression
+                  (literal
+                    (decimal_number)))
+                (expression
+                  (function_call
+                    function: (evm_builtin)))))))))))
+
+================
+Object with data section
+================
+
+object "Contract" {
+  code {
+    datacopy(0, dataoffset("runtime"), datasize("runtime"))
+    return(0, datasize("runtime"))
+  }
+  data "metadata" hex"aabbccdd"
+}
+
+---
+
+(source_file
+  (object_definition
+    name: (string_literal)
+    (code_section
+      (block
+        (statement
+          (expression_statement
+            (expression
+              (function_call
+                function: (evm_builtin)
+                (expression
+                  (literal
+                    (decimal_number)))
+                (expression
+                  (function_call
+                    function: (evm_builtin)
+                    (expression
+                      (literal
+                        (string_literal)))))
+                (expression
+                  (function_call
+                    function: (evm_builtin)
+                    (expression
+                      (literal
+                        (string_literal)))))))))
+        (statement
+          (expression_statement
+            (expression
+              (function_call
+                function: (evm_builtin)
+                (expression
+                  (literal
+                    (decimal_number)))
+                (expression
+                  (function_call
+                    function: (evm_builtin)
+                    (expression
+                      (literal
+                        (string_literal)))))))))))
+    (data_section
+      name: (string_literal)
+      (hex_literal))))
+
+================
+Nested objects
+================
+
+object "Contract" {
+  code {
+    return(0, 0)
+  }
+  object "runtime" {
+    code {
+      stop()
+    }
+  }
+}
+
+---
+
+(source_file
+  (object_definition
+    name: (string_literal)
+    (code_section
+      (block
+        (statement
+          (expression_statement
+            (expression
+              (function_call
+                function: (evm_builtin)
+                (expression
+                  (literal
+                    (decimal_number)))
+                (expression
+                  (literal
+                    (decimal_number)))))))))
+    (object_definition
+      name: (string_literal)
+      (code_section
+        (block
+          (statement
+            (expression_statement
+              (expression
+                (function_call
+                  function: (evm_builtin))))))))))
+
+================
+Object with string data
+================
+
+object "Contract" {
+  code {
+    stop()
+  }
+  data "name" "some string data"
+}
+
+---
+
+(source_file
+  (object_definition
+    name: (string_literal)
+    (code_section
+      (block
+        (statement
+          (expression_statement
+            (expression
+              (function_call
+                function: (evm_builtin)))))))
+    (data_section
+      name: (string_literal)
+      (string_literal))))

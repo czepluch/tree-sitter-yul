@@ -1,0 +1,119 @@
+================
+Decimal number
+================
+
+{
+  let x := 123456789
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (decimal_number)))))))
+
+================
+Hex number
+================
+
+{
+  let x := 0xdeadbeef
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (hex_number)))))))
+
+================
+String literal
+================
+
+{
+  let x := "hello world"
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (string_literal)))))))
+
+================
+String literal with escape
+================
+
+{
+  let x := "hello\nworld"
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (string_literal)))))))
+
+================
+Boolean true
+================
+
+{
+  let x := true
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (true)))))))
+
+================
+Boolean false
+================
+
+{
+  let x := false
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (false)))))))

@@ -1,0 +1,46 @@
+================
+Line comment
+================
+
+// this is a comment
+{
+  let x := 1 // inline comment
+}
+
+---
+
+(source_file
+  (comment)
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (decimal_number)))))
+    (comment)))
+
+================
+Block comment
+================
+
+/* multi-line
+   comment */
+{
+  let x := /* inline */ 1
+}
+
+---
+
+(source_file
+  (comment)
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (comment)
+        (expression
+          (literal
+            (decimal_number)))))))

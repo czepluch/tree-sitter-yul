@@ -1,0 +1,29 @@
+================
+Empty block
+================
+
+{}
+
+---
+
+(source_file
+  (block))
+
+================
+Nested blocks
+================
+
+{
+  {
+    {}
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (block
+        (statement
+          (block))))))

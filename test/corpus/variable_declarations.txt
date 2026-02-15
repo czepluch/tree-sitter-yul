@@ -1,0 +1,117 @@
+================
+Simple variable declaration without assignment
+================
+
+{
+  let x
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))))))
+
+================
+Variable declaration with assignment
+================
+
+{
+  let x := 42
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (decimal_number)))))))
+
+================
+Multiple variable declaration
+================
+
+{
+  let x, y, z
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier)
+          (identifier)
+          (identifier))))))
+
+================
+Multiple variable declaration with assignment
+================
+
+{
+  let x, y := foo()
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier)
+          (identifier))
+        (expression
+          (function_call
+            function: (identifier)))))))
+
+================
+Typed variable declaration
+================
+
+{
+  let x:u256 := 1
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier)
+          (type_name))
+        (expression
+          (literal
+            (decimal_number)))))))
+
+================
+Variable declaration with hex number
+================
+
+{
+  let x := 0xff
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (literal
+            (hex_number)))))))

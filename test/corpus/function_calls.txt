@@ -1,0 +1,81 @@
+================
+EVM builtin call with no args
+================
+
+{
+  pop()
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (expression_statement
+        (expression
+          (function_call
+            function: (evm_builtin)))))))
+
+================
+EVM builtin call with args
+================
+
+{
+  mstore(0, calldataload(0))
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (expression_statement
+        (expression
+          (function_call
+            function: (evm_builtin)
+            (expression
+              (literal
+                (decimal_number)))
+            (expression
+              (function_call
+                function: (evm_builtin)
+                (expression
+                  (literal
+                    (decimal_number)))))))))))
+
+================
+User-defined function call
+================
+
+{
+  function helper(x) -> y { y := x }
+  let result := helper(42)
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (function_definition
+        name: (identifier)
+        (typed_identifier_list
+          (identifier))
+        (typed_identifier_list
+          (identifier))
+        (block
+          (statement
+            (assignment
+              (identifier)
+              (expression
+                (identifier)))))))
+    (statement
+      (variable_declaration
+        (typed_identifier_list
+          (identifier))
+        (expression
+          (function_call
+            function: (identifier)
+            (expression
+              (literal
+                (decimal_number)))))))))

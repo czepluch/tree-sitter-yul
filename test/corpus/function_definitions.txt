@@ -1,0 +1,123 @@
+================
+Simple function definition
+================
+
+{
+  function foo() {}
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (function_definition
+        name: (identifier)
+        (block)))))
+
+================
+Function with parameters
+================
+
+{
+  function add_one(x) -> result {
+    result := add(x, 1)
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (function_definition
+        name: (identifier)
+        (typed_identifier_list
+          (identifier))
+        (typed_identifier_list
+          (identifier))
+        (block
+          (statement
+            (assignment
+              (identifier)
+              (expression
+                (function_call
+                  function: (evm_builtin)
+                  (expression
+                    (identifier))
+                  (expression
+                    (literal
+                      (decimal_number))))))))))))
+
+================
+Function with multiple return values
+================
+
+{
+  function swap(x, y) -> a, b {
+    a := y
+    b := x
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (function_definition
+        name: (identifier)
+        (typed_identifier_list
+          (identifier)
+          (identifier))
+        (typed_identifier_list
+          (identifier)
+          (identifier))
+        (block
+          (statement
+            (assignment
+              (identifier)
+              (expression
+                (identifier))))
+          (statement
+            (assignment
+              (identifier)
+              (expression
+                (identifier)))))))))
+
+================
+Function with typed parameters
+================
+
+{
+  function foo(x:u256, y:u256) -> result:u256 {
+    result := add(x, y)
+  }
+}
+
+---
+
+(source_file
+  (block
+    (statement
+      (function_definition
+        name: (identifier)
+        (typed_identifier_list
+          (identifier)
+          (type_name)
+          (identifier)
+          (type_name))
+        (typed_identifier_list
+          (identifier)
+          (type_name))
+        (block
+          (statement
+            (assignment
+              (identifier)
+              (expression
+                (function_call
+                  function: (evm_builtin)
+                  (expression
+                    (identifier))
+                  (expression
+                    (identifier)))))))))))
