@@ -28,7 +28,6 @@
 ; Keywords
 [
   "let"
-  "leave"
 ] @keyword
 
 [
@@ -37,9 +36,10 @@
 
 [
   "for"
-  "break"
-  "continue"
 ] @keyword.repeat
+
+(break_statement) @keyword.repeat
+(continue_statement) @keyword.repeat
 
 [
   "if"
@@ -47,6 +47,8 @@
   "case"
   "default"
 ] @keyword.conditional
+
+(leave_statement) @keyword.return
 
 ; Object notation
 [
