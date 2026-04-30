@@ -6,7 +6,7 @@
       "scope": "source.yul",
       "path": ".",
       "file-types": ["yul"],
-      "highlights": "queries/highlights.scm",
+      "highlights": "queries/yul/highlights.scm",
       "injection-regex": "^yul$"
     }
   ],
